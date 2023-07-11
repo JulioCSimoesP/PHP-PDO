@@ -1,0 +1,20 @@
+{
+  "name": "juliocsimoesp/php-pdo",
+  "description": "Projeto que explora a utilização de PDOs",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Júlio Simões",
+      "email": "juliocsimoesp@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "juliocsimoesp\\PhpPdo\\": "./src/"
+    }
+  }
+}
