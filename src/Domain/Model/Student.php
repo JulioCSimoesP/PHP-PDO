@@ -7,6 +7,11 @@ use DateTimeInterface;
 
 class Student
 {
+    /**
+     * @var int|null
+     * @property-read int $id
+     * @property-read string $name
+     */
     private ?int $id;
     private string $name;
     private DateTimeInterface $birthDate;
@@ -16,6 +21,12 @@ class Student
         $this->id = $id;
         $this->name = $name;
         $this->birthDate = $birthDate;
+    }
+
+    public function __toString(): string
+    {
+        $data = 'Aluno: ' . $this->name . '; Nascimento: ' . $this->birthDate->format('d-m-Y') . '; Idade: ' . $this->age() . PHP_EOL;
+        return $data;
     }
 
     public function id(): ?int
