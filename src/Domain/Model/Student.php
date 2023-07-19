@@ -4,6 +4,7 @@ namespace juliocsimoesp\PhpPdo\Domain\Model;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use DomainException;
 
 class Student
 {
@@ -11,10 +12,12 @@ class Student
      * @var int|null
      * @property-read int $id
      * @property-read string $name
+     * @var Phone[] $phones
      */
     private ?int $id;
     private string $name;
     private DateTimeInterface $birthDate;
+    private array $phones = [];
 
     public function __construct(?int $id, string $name, DateTimeInterface $birthDate)
     {
@@ -49,5 +52,32 @@ class Student
         return $this->birthDate
             ->diff(new DateTimeImmutable())
             ->y;
+    }
+
+    public function defineId(int $id): void
+    {
+        if (!is_null($this->id)) {
+            throw new DomainException('Só é possível definir o ID uma vez');
+        }
+
+        $this->id = $id;
+    }
+
+    public function changeName(string $newName): void
+    {
+        $this->name = $newName;
+    }
+
+    public function addPhone(Phone $phone): void
+    {
+        $this->phones[] = $phone;
+    }
+
+    /**
+     * @return Phone[]
+     */
+    public function phones(): array
+    {
+        return $this->phones;
     }
 }

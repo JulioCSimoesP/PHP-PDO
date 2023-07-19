@@ -2,10 +2,9 @@
 
 require_once 'vendor/autoload.php';
 
-use juliocsimoesp\PhpPdo\Domain\Model\Student;
+use juliocsimoesp\PhpPdo\Insfrastructure\Persistence\SQLiteConnectionCreator;
 
-const PATH = __DIR__ . DIRECTORY_SEPARATOR . 'bd.sqlite';
-$pdo = new PDO('sqlite:' . PATH);
+$pdo = SQLiteConnectionCreator::createConnection();
 
 function UI(): void
 {
